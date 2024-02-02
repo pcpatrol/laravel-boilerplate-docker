@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  php-apache:
+    image: php:8.2-apache
+    platform: linux/amd64
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/var/www/html
+    # BEGIN: Add Document Root Configuration
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    # END: Add Document Root Configuration
