@@ -12,3 +12,17 @@ services:
       - ./src/:/var/www/html
     environment:
       - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    depends_on:
+      - mariadb  
+  mariadb:
+    image: mariadb:latest
+    platform: linux/amd64
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=mydatabase
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypassword
