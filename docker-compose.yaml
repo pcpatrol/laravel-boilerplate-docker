@@ -14,6 +14,8 @@ services:
       - APACHE_DOCUMENT_ROOT=/var/www/html/public
     depends_on:
       - mariadb  
+    networks:
+      - mynetwork
   mariadb:
     image: mariadb:latest
     platform: linux/amd64
@@ -26,3 +28,8 @@ services:
       - MYSQL_DATABASE=mydatabase
       - MYSQL_USER=myuser
       - MYSQL_PASSWORD=mypassword
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
