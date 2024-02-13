@@ -6,6 +6,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install MySQL client
 RUN apt-get update && apt-get install -y default-mysql-client
 
+# Install PHP zip extension
+RUN apt-get install -y libzip-dev zip && \
+    docker-php-ext-install zip
+
+
+
+
 # Set up environment variables for MariaDB connection
 ENV DB_HOST=mariadb
 ENV DB_PORT=3306
