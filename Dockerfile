@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y default-mysql-client
 RUN apt-get install -y libzip-dev zip && \
     docker-php-ext-install zip
 
+# Enable PHP zip extension
+RUN docker-php-ext-enable zip
 
 
 
